@@ -16,7 +16,7 @@ public class ForumApplication implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("home");
 		registry.addViewController("/news").setViewName("news");
-		registry.addViewController("/posts").setViewName("posts");
+//		registry.addViewController("/posts").setViewName("posts");
 		registry.addViewController("/profile").setViewName("profile");
 		registry.addViewController("/about").setViewName("about");
 	}

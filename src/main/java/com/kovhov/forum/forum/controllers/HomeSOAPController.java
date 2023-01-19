@@ -1,7 +1,9 @@
 package com.kovhov.forum.forum.controllers;
 
 import com.kovhov.forum.forum.model.Posts.Post;
+import com.kovhov.forum.forum.service.PostService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,14 @@ import java.util.logging.Logger;
 @Controller
 public class HomeSOAPController {
 
-//    @GetMapping("/")
+    private final PostService postService;
+
+    @Autowired
+    public HomeSOAPController(PostService postService) {
+        this.postService = postService;
+    }
+
+    //    @GetMapping("/")
 //    public String home(){
 //        return "home";
 //    }
@@ -37,7 +46,12 @@ public class HomeSOAPController {
     public String saveNewPost(@ModelAttribute("post") Post post){
         post.setDateCreate(new Date());
         System.out.println(post.toString());
+        return "posts";
+    }
 
+    @GetMapping("/posts")
+    public String allPosts(Model model){
+        model.addAttribute("postlist", postService.returnAllPost());
         return "posts";
     }
 }

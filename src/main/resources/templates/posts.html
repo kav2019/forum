@@ -15,6 +15,14 @@
 
 <br>
 <a th:href="@{/new_post}">+add post</a>
+<br>
+
+<p>Posts:  </p>
+<div th:each = "posts : ${postlist}">
+    <a th:href="@{/posts/{id}(id=${posts.getId()})}" th:text="${posts.getTitle()} + ' ' + ${posts.displatenDate()}">name</a>
+    <h5 th:text="${posts.getTextPost}">text post</h5>
+</div>
+
 
 
 
