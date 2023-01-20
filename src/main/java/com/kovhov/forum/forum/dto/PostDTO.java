@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
@@ -29,8 +30,13 @@ public class PostDTO {
     private Date dateCreate;
     private String author;
 
+    // return date in format to usability
     public String displatenDate(){
+        return new SimpleDateFormat("dd-MM-yyyy").format(dateCreate);
+    }
 
+    public String returnTitleToDisplay(){
+        return author + " " + displatenDate();
     }
 
 }

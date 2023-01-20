@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
@@ -41,4 +42,12 @@ public class Post {
 
     @Column(name = "author")
     private String author;
+
+    public String displatenDate(){
+        return new SimpleDateFormat("dd-MM-yyyy").format(dateCreate);
+    }
+
+    public String returnTitleToDisplay(){
+        return author + " " + displatenDate();
+    }
 }

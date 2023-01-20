@@ -16,13 +16,24 @@
 <br>
 <a th:href="@{/new_post}">+add post</a>
 <br>
-
+<a th:href="@{/posts?page=0&post_per_page=3}">per 3 posts</a>
+<a th:href="@{/posts?page=0&post_per_page=5}">per 5 posts</a>
+<a th:href="@{/posts?page=0&post_per_page=10}">per 10 posts</a>
+<br>
 <p>Posts:  </p>
 <div th:each = "posts : ${postlist}">
-    <a th:href="@{/posts/{id}(id=${posts.getId()})}" th:text="${posts.getTitle()} + ' ' + ${posts.displatenDate()}">name</a>
+    <a th:href="@{/posts/{id}(id=${posts.getId()})}" th:text="${posts.getTitle()}">name</a>
+    <h5 th:text="${posts.returnTitleToDisplay()}">info create posts</h5>
     <h5 th:text="${posts.getTextPost}">text post</h5>
+    <br>
 </div>
+<br>
 
+
+
+<div th:each = "p : ${rangepage}">
+    <a th:href="@{/posts?page={pp}&post_per_page={ppp}(pp=${p},ppp=${perpage})}" th:text="${p}">page</a>
+</div>
 
 
 
